@@ -1,0 +1,67 @@
+﻿@page "/film-details"  
+@page "/film-details/{id:int}"
+@using BlazorCRUD.Model  
+@using Interfaces  
+@rendermode InteractiveServer
+@inject IFilmService FilmService 
+@inject NavigationManager NavigationManager
+
+<h1 style="text-align: center;">Film Details</h1>
+<EditForm Model="@film" FormName="Name">
+    <table class="table-custom">
+        <tr>
+            <td class="label-text">Title:</td>
+            <td><InputText @bind-Value="film.Title" placeholder="Title" class="form-control input-left" /></td>
+        </tr>
+        <tr>
+            <td class="label-text">Director:</td>
+            <td><InputText @bind-Value="film.Director" placeholder="Director" class="form-control input-left" /></td>
+        </tr>
+        <tr>
+            <td class="label-text">Description:</td>
+            <td><InputText @bind-Value="film.Description" placeholder="Description" class="form-control input-left" /></td>
+        </tr>
+        <tr>
+            <td class="label-text">Release Date:</td>
+            <td><InputDate @bind-Value="film.ReleaseDate" placeholder="ReleaseDate" class="form-control input-left" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="button-row">
+                <input type="button" value="Save" @onclick="SaveFilm" class="btn-custom-save">
+                <!--<input type="button" value="Debug Film" @onclick="DebugFilm" class="btn btn-secondary">-->
+
+                <input type="button" value="Cancel" @onclick="CancelFilm" class="btn-custom-cancel" />
+            </td>
+        </tr>
+    </table>
+</EditForm>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    Film film = new Film();
+
+    private void CancelFilm()
+    {
+        NavigationManager.NavigateTo("/filmlist");
+    }
+
+    private async Task SaveFilm()
+    {   
+        await FilmService.SaveFilm(film);
+
+        NavigationManager.NavigateTo("/filmlist");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (id == 0)
+        {
+            film.ReleaseDate = DateTime.Now;
+        }
+        else
+        {
+            film = await FilmService.GetFilmDetails(id);
+        }
+    }
+}
