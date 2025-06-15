@@ -51,10 +51,10 @@ h1:focus {
 }
 
 .btn-custom-save {
-    color: black; /* texto negro */
+    color: black; 
     background-color: #198754 !important;
-    border-radius: 50rem; /* rounded-pill */
-    padding: 0.50rem 0.1rem; /* py-2 px-4 */
+    border-radius: 50rem;
+    padding: 0.50rem 0.1rem;
     min-width: 180px;
     border: none;
     cursor: pointer;
@@ -66,10 +66,10 @@ h1:focus {
     }
 
 .btn-custom-cancel {
-    color: black; /* texto negro */
+    color: black; 
     background-color: #d11b40 !important;
-    border-radius: 50rem; /* rounded-pill */
-    padding: 0.50rem 0.1rem; /* py-2 px-4 */
+    border-radius: 50rem;
+    padding: 0.50rem 0.1rem;
     min-width: 180px;
     border: none;
     cursor: pointer;
@@ -81,30 +81,93 @@ h1:focus {
     }
 
 .button-row {
-    padding-top: 1rem; /* Aumenta la separación hacia arriba */
+    padding-top: 1rem;
     padding-right: 56rem;
     text-align: center;
 }
 
 .label-text {
     font-weight: bold;
-    max-width: 20px; /* mantienes el max ancho */
+    max-width: 20px;
     color: #333;
     font-size: 1.1rem;
-    padding-right:0.3rem; /* poco espacio a la derecha */
+    padding-right:0.3rem;
     text-align: left;
     vertical-align: middle;
-    white-space: nowrap; /* evitar que el texto se rompa */
+    white-space: nowrap;
 }
 
 .table-custom {
     margin-top: 3rem;
-    border-collapse: collapse; /* elimina espacio entre celdas */
+    border-collapse: collapse; 
     width: 100%;
 }
 .input-left {
-    width: 35%; /* input ocupa todo el espacio de la celda */
-    margin-left: 0; /* elimina márgenes que podrían haber */
-    padding-left: 0.2rem; /* un poquito de espacio interno para comodidad */
-    box-sizing: border-box; /* para que padding no expanda el input */
+    width: 35%; 
+    margin-left: 0; 
+    padding-left: 0.2rem;
+    box-sizing: border-box; 
 }
+
+.film-table {
+    width: 100%;
+    margin-top: 2rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+    background-color: white;
+}
+
+    .film-table thead {
+        background-color: #343a40;
+        color: #fff;
+    }
+
+
+    .film-table th {
+        padding: 14px 20px;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+        vertical-align: top;
+    }
+
+    .film-table td {
+        padding: 14px 20px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .film-table tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .film-table .description-cell {
+        max-width: 300px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .film-table .action-link {
+        text-decoration: none;
+        padding: 6px 12px;
+        border-radius: 5px;
+        font-size: 0.9em;
+        color: white;
+        background-color: #007bff;
+        margin-right: 6px;
+        display: inline-block;
+    }
+
+        .film-table .action-link.delete {
+            background-color: #dc3545;
+        }
+
+        .film-table .action-link:hover {
+            opacity: 0.85;
+        }
+

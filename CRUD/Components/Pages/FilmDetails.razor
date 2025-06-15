@@ -5,6 +5,8 @@
 @rendermode InteractiveServer
 @inject IFilmService FilmService 
 @inject NavigationManager NavigationManager
+@inject SweetAlertService Swal
+
 
 <h1 style="text-align: center;">Film Details</h1>
 <EditForm Model="@film" FormName="Name">
@@ -48,9 +50,24 @@
 
     private async Task SaveFilm()
     {   
-        await FilmService.SaveFilm(film);
+        // Show confirmation dialog before saving
+        var result = await Swal.FireAsync(new SweetAlertOptions
+        {
+            Title = "Do you want to save changes?",
+            Text = "Make sure all fields are correctly filled.",
+            Icon = SweetAlertIcon.Question,
+            ShowCancelButton = true,
+            ConfirmButtonText = "Yes, save",
+            CancelButtonText = "Cancel"
+        });
+        if (!string.IsNullOrEmpty(result.Value))
+        {            
+            await FilmService.SaveFilm(film);
 
-        NavigationManager.NavigateTo("/filmlist");
+            await Swal.FireAsync("Saved!", "The film has been saved successfully.", SweetAlertIcon.Success);
+
+            NavigationManager.NavigateTo("/filmlist");
+        }
     }
 
     protected override async Task OnInitializedAsync()

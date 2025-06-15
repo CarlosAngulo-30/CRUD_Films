@@ -3,6 +3,7 @@ using CRUD.Components;
 using CRUD.Data;
 using CRUD.Interfaces;
 using CRUD.Services;
+using CurrieTechnologies.Razor.SweetAlert2;
 using FluentAssertions.Common;
 using Microsoft.Data.SqlClient;
 
@@ -18,6 +19,7 @@ builder.Services.AddScoped<SqlConnection>(sp =>
 builder.Services.AddSingleton(new SqlConfiguration(
     builder.Configuration.GetConnectionString("sqlConnection")
 ));
+builder.Services.AddSweetAlert2();
 var app = builder.Build();
 Console.WriteLine("App construida - antes de iniciar");
 

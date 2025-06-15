@@ -14,14 +14,14 @@
 }
 else
 {
-    <table class="table-custom">
+    <table class="film-table">
         <thead>
             <tr>
                 <th>Title</th>
                 <th>Director</th>
                 <th>Description</th>
                 <th>Release Date</th>
-                <th></th>
+                <th colspan="2" style="text-align: center;">Actions</th>
                 <th></th>
             </tr>
         </thead>
@@ -32,9 +32,9 @@ else
                     <td>@film.Title</td>
                     <td>@film.Director</td>
                     <td>@film.Description</td>
-                    <td>@film.ReleaseDate</td>
-                    <td><a href="/film-details/@film.Id"><i>Edit</i></a></td>
-                    <td><a href="/film-delete/@film.Id"><i>Delete</i></a></td>
+                    <td>@film.ReleaseDate?.ToString("dd/MM/yyyy")</td>
+                    <td><button class="btn btn-primary" onclick="location.href='/film-details/@film.Id'">Edit</button></td>
+                    <td><button class="btn btn-danger" onclick="location.href='/film-delete/@film.Id'">Delete</button></td>
                 </tr>
             }
         </tbody>
@@ -55,3 +55,5 @@ else
         }
     }
 }
+
+
