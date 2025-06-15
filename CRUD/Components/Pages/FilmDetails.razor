@@ -10,32 +10,34 @@
 
 <h1 style="text-align: center;">Film Details</h1>
 <EditForm Model="@film" FormName="Name">
-    <table class="table-custom">
-        <tr>
-            <td class="label-text">Title:</td>
-            <td><InputText @bind-Value="film.Title" placeholder="Title" class="form-control input-left" /></td>
-        </tr>
-        <tr>
-            <td class="label-text">Director:</td>
-            <td><InputText @bind-Value="film.Director" placeholder="Director" class="form-control input-left" /></td>
-        </tr>
-        <tr>
-            <td class="label-text">Description:</td>
-            <td><InputText @bind-Value="film.Description" placeholder="Description" class="form-control input-left" /></td>
-        </tr>
-        <tr>
-            <td class="label-text">Release Date:</td>
-            <td><InputDate @bind-Value="film.ReleaseDate" placeholder="ReleaseDate" class="form-control input-left" /></td>
-        </tr>
-        <tr>
-            <td colspan="2" class="button-row">
-                <input type="button" value="Save" @onclick="SaveFilm" class="btn-custom-save">
-                <!--<input type="button" value="Debug Film" @onclick="DebugFilm" class="btn btn-secondary">-->
+    <div class="form-wrapper">
 
-                <input type="button" value="Cancel" @onclick="CancelFilm" class="btn-custom-cancel" />
-            </td>
-        </tr>
-    </table>
+        <div class="input-group">
+            <InputText @bind-Value="film.Title" id="title" class="input" required />
+            <label for="title" class="user-label">Title</label>
+        </div>
+
+        <div class="input-group">
+            <InputText @bind-Value="film.Director" id="director" class="input" required />
+            <label for="director" class="user-label">Director</label>
+        </div>
+
+        <div class="input-group">
+            <InputText @bind-Value="film.Description" id="description" class="input" required />
+            <label for="description" class="user-label">Description</label>
+        </div>
+
+        <div class="input-group">
+            <InputDate @bind-Value="film.ReleaseDate" id="releaseDate" class="input" required />
+            <label for="releaseDate" class="user-label">Release Date</label>
+        </div>
+
+        <div class="button-row">
+            <input type="button" value="Save" @onclick="SaveFilm" class="btn-custom-save" />
+            <input type="button" value="Cancel" @onclick="CancelFilm" class="btn-custom-cancel" />
+        </div>
+
+    </div>
 </EditForm>
 
 @code {

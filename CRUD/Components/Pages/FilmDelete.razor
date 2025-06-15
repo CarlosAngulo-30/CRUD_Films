@@ -10,31 +10,34 @@
 
 
 <EditForm Model="@film" FormName="Name">
-    <table class="table-custom">
-        <tr>
-            <td class="label-text">Title:</td>
-            <td><InputText @bind-Value="film.Title" placeholder="Title" class="form-control input-left" /></td>
-        </tr>
-        <tr>
-            <td class="label-text">Director:</td>
-            <td><InputText @bind-Value="film.Director" placeholder="Director" class="form-control input-left" /></td>
-        </tr>
-        <tr>
-            <td class="label-text">Description:</td>
-            <td><InputText @bind-Value="film.Description" placeholder="Description" class="form-control input-left" /></td>
-        </tr>
-        <tr>
-            <td class="label-text">Release Date:</td>
-            <td><InputDate @bind-Value="film.ReleaseDate" placeholder="ReleaseDate" class="form-control input-left" /></td>
-        </tr>
-        <tr>
-            <td colspan="2" class="button-row">
-                <input type="button" value="Delete" @onclick="DeleteFilm" class="btn-custom-cancel">
-                <input type="button" value="Cancel" @onclick="CancelFilm" class="btn-custom-save" />
-            </td>
-        </tr>
+    <div class="form-wrapper">
 
-    </table>
+        <div class="form-group">
+            <label class="label-text">Title:</label>
+            <InputText @bind-Value="film.Title" placeholder="Title" class="form-control input" />
+        </div>
+
+        <div class="form-group">
+            <label class="label-text">Director:</label>
+            <InputText @bind-Value="film.Director" placeholder="Director" class="form-control input" />
+        </div>
+
+        <div class="form-group">
+            <label class="label-text">Description:</label>
+            <InputText @bind-Value="film.Description" placeholder="Description" class="form-control input" />
+        </div>
+
+        <div class="form-group">
+            <label class="label-text">Release Date:</label>
+            <InputDate @bind-Value="film.ReleaseDate" placeholder="Release Date" class="form-control input" />
+        </div>
+
+        <div class="button-row">
+            <input type="button" value="Delete" @onclick="DeleteFilm" class="btn-custom-cancel" />
+            <input type="button" value="Cancel" @onclick="CancelFilm" class="btn-custom-save" />
+        </div>
+
+    </div>
 </EditForm>
 
 
